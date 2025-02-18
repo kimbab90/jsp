@@ -1,4 +1,4 @@
-package com.yedam;
+package com.yedam.serv;
 
 import java.io.IOException;
 
@@ -7,6 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.yedam.dao.EmpDAO;
+import com.yedam.vo.Employee;
 
 /**
  * Servlet implementation class AddEmployeeServ
@@ -24,16 +27,14 @@ public class AddEmployeeServ extends HttpServlet {
 
 		EmpDAO dao = new EmpDAO();
 
-		resp.setContentType("text/html;charset=utf-8");;
-		
-		if (dao.register(new Employee(Integer.parseInt(empNo), empName, telNo))) {
-			resp.sendRedirect("sample");
+		resp.setContentType("text/html;charset=utf-8");
 
-//			resp.getWriter().print("등록성공");
+		if (dao.register(new Employee(Integer.parseInt(empNo), empName, telNo))) {
+//			resp.sendRedirect("sample");
+
+			resp.getWriter().print("등록성공");
 		} else {
 			resp.getWriter().print("등록실패");
 		}
-
 	}
-
 }
