@@ -4,6 +4,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
 
 	private int empNo;
@@ -11,10 +22,6 @@ public class Employee {
 	private String telNo;
 	private Date hireDate;
 	private int salary;
-
-	public Employee() {
-		super();
-	}
 
 	public Employee(int empNo, String empName, String telNo) {
 		super();
@@ -41,46 +48,6 @@ public class Employee {
 
 	public String empInfo() {
 		return "" + empNo + "  " + empName + "  " + telNo + "  " + salary;
-	}
-
-	public int getEmpNo() {
-		return empNo;
-	}
-
-	public void setEmpNo(int empNo) {
-		this.empNo = empNo;
-	}
-
-	public String getEmpName() {
-		return empName;
-	}
-
-	public void setEmpName(String empName) {
-		this.empName = empName;
-	}
-
-	public String getTelNo() {
-		return telNo;
-	}
-
-	public void setTelNo(String telNo) {
-		this.telNo = telNo;
-	}
-
-	public Date getHireDate() {
-		return hireDate;
-	}
-
-	public void setHireDate(Date hireDate) {
-		this.hireDate = hireDate;
-	}
-
-	public int getSalary() {
-		return salary;
-	}
-
-	public void setSalary(int salary) {
-		this.salary = salary;
 	}
 
 }
