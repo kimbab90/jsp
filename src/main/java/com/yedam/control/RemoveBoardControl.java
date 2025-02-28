@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.dao.BoardDAO;
+import com.yedam.common.DataSource;
 
 public class RemoveBoardControl implements Control {
 
@@ -15,10 +15,10 @@ public class RemoveBoardControl implements Control {
 		// TODO Auto-generated method stub
 		
 		int boardNo = Integer.parseInt(req.getParameter("board_no"));
+				
+//		BoardMapper mapper = DataSource.getBoardMapper();
 		
-		BoardDAO dao = new BoardDAO();
-		
-		if (dao.deleteBoard(boardNo)) {
+		if (DataSource.getBoardMapper().deleteBoard(boardNo) == 1) {
 			resp.sendRedirect("boardList.do");
 		} else {
 			

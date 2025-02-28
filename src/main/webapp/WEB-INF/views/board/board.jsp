@@ -61,25 +61,66 @@
 </style>
 
 <div class="container reply">
-	<div class="header" align="center">
-	<input type="text" name="reply" class="form-control">
-	<button type="button" class="btn btn-primary" onclick="addReply()">등록</button>
+	<div class="header p-2" align="center">
+		<input type="text" id="reply_input" name="reply" class="form-control mb-2">
+		<button type="button" class="btn btn-primary" id="addRow">등록</button>
+		<button type="button" class="btn btn-primary" id="deleteRow">삭제</button>
 	</div>
 
+	<table id="example" class="table table-striped" style="width: 100%">
+		<thead>
+			<tr>
+				<th>댓글번호</th>
+				<th>댓글내용</th>
+				<th>작성자</th>
+				<th>작성일시</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>댓글번호</th>
+				<th>댓글내용</th>
+				<th>작성자</th>
+				<th>작성일시</th>
+			</tr>
+		</tfoot>
+	</table>
+
+	<!-- 
 	<div class="content">
-	<ul>
-	</ul>
+		<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<span class="col-sm-2">댓글번호</span>
+			<span class="col-sm-5">댓글내용</span>
+			<span class="col-sm-2">작성자</span>
+			<span class="col-sm-2">삭제</span>
+			</li>
+		</ul>
 	</div>
-	
+
 	<div class="footer">
-
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center pagination-sm">
+				<li class="page-item disabled"><a class="page-link">Prev</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			</ul>
+		</nav>
 	</div>
-
+ -->
 </div>
 
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css" />
 <script>
-const loginId = '${loginId }';
-const boardNo = '${board.boardNo }';
+	const loginId = '${loginId }';
+	const boardNo = '${board.boardNo }';
 </script>
 <script src="js/boardService.js"></script>
-<script src="js/board.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script src="js/reply_dt.js"></script>
+<!-- <script src="js/board.js"></script> -->

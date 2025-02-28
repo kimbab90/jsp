@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.dao.BoardDAO;
+import com.yedam.common.DataSource;
 import com.yedam.vo.BoardVO;
 
 public class ModifyControl implements Control {
@@ -17,9 +17,9 @@ public class ModifyControl implements Control {
 
 		int boardNo = Integer.parseInt(req.getParameter("board_no"));
 
-		BoardDAO dao = new BoardDAO();
-
-		BoardVO board = dao.getBoard(boardNo);
+//		BoardMapper mapper = DataSource.getBoardMapper();
+		
+		BoardVO board = DataSource.getBoardMapper().getBoard(boardNo);
 
 		String loginId = (String) req.getSession().getAttribute("loginId");
 

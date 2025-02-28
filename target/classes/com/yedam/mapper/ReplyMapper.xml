@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.ReplyMapper">
+
+	<select id="chartData" resultType="Map">
+		select d.department_name, count(1) cnt 
+		from employees e join departments d on e.department_id = d.department_id 
+		group by e.department_id, d.department_name
+	</select>
+	
+	<select id="replyCount" resultType="int" parameterType="int">
+		select count(1) from tbl_reply where board_no = #{boardNo}
+	</select>
+	
+	<select id="replyList" resultType="reply" parameterType="Map">
+		select tbl_a.* 
+		from (select /*+ INDEX_DESC (r pk_reply) */  rownum rn, r.* 
+		from tbl_reply r where board_no = #{boardNo}) tbl_a 
+		where rn > (#{pageNo} - 1) * 5  and rn <![CDATA[ < ]]>  (#{pageNo} * 5) + 1
+	</select>
+	
+	<select id="replyListAll" resultType="reply" parameterType="int">
+		select /*+ INDEX_DESC (r pk_reply) */ * 
+		from tbl_reply r where board_no = #{boardNo}
+	</select>
+	
+	<select id="selectReply" resultType="reply" parameterType="int">
+		select * from tbl_reply where reply_no = #{replyNo}
+	</select>	
+	
+	<insert id="insertReply" parameterType="reply">
+		<selectKey order="BEFORE" keyProperty="replyNo" resultType="int">
+			select reply_seq.nextval from dual
+		</selectKey>
+		
+		insert into tbl_reply values (#{replyNo}, #{reply}, #{replyer}, #{boardNo}, #{replyDate})
+	</insert>
+
+	<delete id="deleteReply" parameterType="int">
+	delete from tbl_reply where reply_no = #{replyNo}
+	</delete>
+	
+	<select id="fullData" resultType="Map">
+		select title as "title", start_date as "start", end_date as "end" from tbl_calendar
+	</select>
+
+	<insert id="insertFullData" parameterType="Map">
+		insert into tbl_calendar values (#{title}, #{startDate}, #{endDate})
+	</insert>
+	
+</mapper>

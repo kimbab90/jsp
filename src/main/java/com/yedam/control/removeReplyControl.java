@@ -6,9 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.dao.ReplyDAO;
+import com.yedam.common.DataSource;
 
-public class removeReplyControl implements Control {
+public class RemoveReplyControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -16,9 +16,10 @@ public class removeReplyControl implements Control {
 
 		String replyNo = req.getParameter("reply_no");
 
-		ReplyDAO dao = new ReplyDAO();
+//		ReplyDAO dao = new ReplyDAO();
+//		ReplyMapper mapper = DataSource.getReplyMapper();
 
-		if (dao.deleteReply(Integer.parseInt(replyNo))) {
+		if (DataSource.getReplyMapper().deleteReply(Integer.parseInt(replyNo)) == 1) {
 			resp.getWriter().print("{\"retCode\": \"OK\"}");
 		} else {
 			resp.getWriter().print("{\"retCode\": \"NG\"}");

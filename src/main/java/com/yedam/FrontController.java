@@ -11,13 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddBoardControl;
 import com.yedam.control.AddFormControl;
+import com.yedam.control.AddFullDataControl;
 import com.yedam.control.AddMemberControl;
 import com.yedam.control.AddReplyControl;
 import com.yedam.control.AjaxControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+import com.yedam.control.ChartControl;
+import com.yedam.control.ChartDataControl;
 import com.yedam.control.Control;
 import com.yedam.control.DataControl;
+import com.yedam.control.DataTableControl;
+import com.yedam.control.FullControl;
+import com.yedam.control.FullDataControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
@@ -25,9 +31,11 @@ import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.ModifyControl;
 import com.yedam.control.RemoveBoardControl;
+import com.yedam.control.RemoveFullDataControl;
 import com.yedam.control.RemoveMemberControl;
 import com.yedam.control.ReplyListControl;
-import com.yedam.control.removeReplyControl;
+import com.yedam.control.GetReplyCntControl;
+import com.yedam.control.RemoveReplyControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -55,13 +63,23 @@ public class FrontController extends HttpServlet {
 
 		map.put("/replyList.do", new ReplyListControl());
 		map.put("/addReply.do", new AddReplyControl());
-		map.put("/removeReply.do", new removeReplyControl());
+		map.put("/removeReply.do", new RemoveReplyControl());
+		map.put("/getReplyCnt.do", new GetReplyCntControl());
 
 		map.put("/memberList.do", new MemberListControl());
 		map.put("/removeMember.do", new RemoveMemberControl());
 		map.put("/addMember.do", new AddMemberControl());
 		map.put("/testAjax.do", new AjaxControl());
 		map.put("/testData.do", new DataControl());
+		
+		map.put("/chart.do", new ChartControl());
+		map.put("/chartData.do", new ChartDataControl());
+		map.put("/dataTable.do", new DataTableControl());
+		
+		map.put("/full.do", new FullControl());	
+		map.put("/fullData.do", new FullDataControl());
+		map.put("/addFullData.do", new AddFullDataControl());
+		map.put("/removeFullData.do", new RemoveFullDataControl());
 	}
 
 	@Override

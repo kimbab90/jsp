@@ -7,10 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.dao.BoardDAO;
+import com.yedam.common.DataSource;
+import com.yedam.common.PageVO;
+import com.yedam.common.SearchVO;
 import com.yedam.vo.BoardVO;
-import com.yedam.vo.PageVO;
-import com.yedam.vo.SearchVO;
 
 public class BoardListControl implements Control {
 
@@ -27,14 +27,15 @@ public class BoardListControl implements Control {
 		sc = sc == null ? "" : sc;
 		kw = kw == null ? "" : kw;
 
-		BoardDAO dao = new BoardDAO();
 		SearchVO search = new SearchVO(Integer.parseInt(pageNo), sc, kw);
-
-		List<BoardVO> list = dao.selectBoard(search);
+		
+//		BoardMapper mapper = DataSource.getBoardMapper();
+	
+		List<BoardVO> list =  DataSource.getBoardMapper().selectBoard(search);
 		
 		req.setAttribute("list", list);
 		
-		int totalCnt = dao.getTotalCnt(search);
+		int totalCnt = DataSource.getBoardMapper().getTotalCnt(search);
 		
 		PageVO paging = new PageVO(Integer.parseInt(pageNo), totalCnt);
 		

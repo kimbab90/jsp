@@ -1,6 +1,7 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.yedam.dao.ReplyDAO;
+import com.yedam.common.DataSource;
 import com.yedam.vo.ReplyVO;
 
 public class AddReplyControl implements Control {
@@ -20,7 +21,7 @@ public class AddReplyControl implements Control {
 		// TODO Auto-generated method stub
 
 		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html;charset=utf-8");
+		resp.setContentType("text/json;charset=utf-8");
 
 		String boardNo = req.getParameter("board_no");
 		String reply = req.getParameter("reply");
@@ -30,13 +31,16 @@ public class AddReplyControl implements Control {
 		vo.setBoardNo(Integer.parseInt(boardNo));
 		vo.setReply(reply);
 		vo.setReplyer(replyer);
+		vo.setReplyDate(new Date());
 
-		ReplyDAO dao = new ReplyDAO();
+//		ReplyDAO dao = new ReplyDAO();
+//		ReplyMapper mapper = DataSource.getReplyMapper();
+		
 
 		Map<String, Object> result = new HashMap<>();
 		Gson gson = new GsonBuilder().create();
 
-		if (dao.insertReply(vo)) {
+		if (DataSource.getReplyMapper().insertReply(vo) == 1) {
 			result.put("retCode", "OK");
 			result.put("retVal", vo);
 		} else {

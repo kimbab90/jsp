@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yedam.dao.BoardDAO;
+import com.yedam.common.DataSource;
 import com.yedam.vo.BoardVO;
 
 public class BoardControl implements Control {
@@ -17,11 +17,11 @@ public class BoardControl implements Control {
 		
 		int boardNo = Integer.parseInt(req.getParameter("board_no"));
 		
-		BoardDAO dao = new BoardDAO();
-
-		dao.updateViewCnt(boardNo);
+//		BoardMapper mapper = DataSource.getBoardMapper();
 		
-		BoardVO board = dao.getBoard(boardNo);
+		DataSource.getBoardMapper().updateViewCnt(boardNo);
+		
+		BoardVO board = DataSource.getBoardMapper().getBoard(boardNo);
 		
 		req.setAttribute("board", board);
 	

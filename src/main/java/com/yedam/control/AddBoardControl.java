@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.yedam.dao.BoardDAO;
+import com.yedam.common.DataSource;
 import com.yedam.vo.BoardVO;
 
 public class AddBoardControl implements Control {
@@ -28,9 +28,8 @@ public class AddBoardControl implements Control {
 		board.setContent(mr.getParameter("content"));
 		board.setWriter(mr.getParameter("writer"));
 		board.setImg(mr.getFilesystemName("img"));
-
-		BoardDAO dao = new BoardDAO();
-		if (dao.insertBoard(board)) {
+		
+		if (DataSource.getBoardMapper().insertBoard(board) == 1) {
 			resp.sendRedirect("boardList.do");
 		} else {
 			
