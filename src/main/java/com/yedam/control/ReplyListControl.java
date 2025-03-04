@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.DataSource;
-import com.yedam.mapper.ReplyMapper;
 import com.yedam.vo.ReplyVO;
 
 public class ReplyListControl implements Control {
@@ -20,7 +19,7 @@ public class ReplyListControl implements Control {
 		// TODO Auto-generated method stub
 
 		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/json;charset=utf-8");
+		resp.setContentType("application/json;charset=utf-8");
 
 		String boardNo = req.getParameter("board_no");
 		String pageNo = req.getParameter("page_no");

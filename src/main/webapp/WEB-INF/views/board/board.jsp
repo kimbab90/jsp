@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 <h3>게시글 상세</h3>
 <form action="modifyForm.do" method="post">
 	<input type="hidden" name="board_no" value="${board.boardNo }">
@@ -62,7 +61,8 @@
 
 <div class="container reply">
 	<div class="header p-2" align="center">
-		<input type="text" id="reply_input" name="reply" class="form-control mb-2">
+		<input type="text" id="reply_input" name="reply"
+			class="form-control mb-2">
 		<button type="button" class="btn btn-primary" id="addRow">등록</button>
 		<button type="button" class="btn btn-primary" id="deleteRow">삭제</button>
 	</div>

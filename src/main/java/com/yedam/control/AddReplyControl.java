@@ -21,7 +21,7 @@ public class AddReplyControl implements Control {
 		// TODO Auto-generated method stub
 
 		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/json;charset=utf-8");
+		resp.setContentType("application/json;charset=utf-8");
 
 		String boardNo = req.getParameter("board_no");
 		String reply = req.getParameter("reply");

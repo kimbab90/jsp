@@ -15,6 +15,7 @@ import com.yedam.control.AddFullDataControl;
 import com.yedam.control.AddMemberControl;
 import com.yedam.control.AddReplyControl;
 import com.yedam.control.AjaxControl;
+import com.yedam.control.ApiControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 import com.yedam.control.ChartControl;
@@ -27,6 +28,7 @@ import com.yedam.control.FullDataControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
+import com.yedam.control.MapControl;
 import com.yedam.control.MemberListControl;
 import com.yedam.control.ModifyBoardControl;
 import com.yedam.control.ModifyControl;
@@ -80,6 +82,9 @@ public class FrontController extends HttpServlet {
 		map.put("/fullData.do", new FullDataControl());
 		map.put("/addFullData.do", new AddFullDataControl());
 		map.put("/removeFullData.do", new RemoveFullDataControl());
+		
+		map.put("/api.do", new ApiControl());
+		map.put("/map.do", new MapControl());
 	}
 
 	@Override

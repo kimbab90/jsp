@@ -21,7 +21,7 @@ public class DataTableControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		resp.setContentType("text/json;charset=utf-8");
+		resp.setContentType("application/json;charset=utf-8");
 		
 		String boardNo = req.getParameter("board_no");
 

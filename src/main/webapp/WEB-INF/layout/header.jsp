@@ -19,5 +19,6 @@
 		</c:choose>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="chart.do">차트</a>
 		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="full.do">달력</a>
+		<a class="list-group-item list-group-item-action list-group-item-light p-3" href="api.do">공공데이터</a>
 	</div>
 </div>

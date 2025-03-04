@@ -28,4 +28,8 @@ public interface ReplyMapper {
 	public int insertFullData(@Param("title") String title,
 			@Param("startDate") String startDate,
 			@Param("endDate") String endDate);
+	
+	public int deleteFullData(@Param("title") String title,
+			@Param("startDate") String startDate,
+			@Param("endDate") String endDate);
 }

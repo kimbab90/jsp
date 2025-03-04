@@ -55,7 +55,43 @@ function drawCalendar(eventAll = []) {
 		eventClick: function(arg) {
 			if (confirm('Are you sure you want to delete this event?')) {
 				console.log(arg);
-				arg.event.remove();
+
+				fetch('removeFullData.do', {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+					body: new URLSearchParams({
+						title: arg.event.title
+						, startDate: arg.event.startStr
+						, endDate: arg.event.endStr
+					})
+				}).then((result) => result.json())
+					.then((result) => {
+						if (result.retCode == "OK") {
+							arg.event.remove();
+						} else {
+							alert('삭제 오류');
+						}
+					}).catch((error) => {
+						console.log(error);
+					});
+
+/*
+				fetch('removeFullData.do?title=' + arg.event.title +
+					"&startDate=" + arg.event.startStr +
+					"&endDate=" + arg.event.endStr
+				).then((result) => result.json())
+					.then((result) => {
+						if (result.retCode == "OK") {
+							arg.event.remove();
+						} else {
+							alert('삭제 오류');
+						}
+					}).catch((error) => {
+						console.log(error);
+					});
+*/
 			}
 		},
 		editable: true,
